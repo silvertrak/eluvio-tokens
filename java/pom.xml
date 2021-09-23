@@ -112,12 +112,27 @@
 
     </dependencies>
 
-    <distributionManagement>
-        <repository>
+    <profiles>
+        <profile>
             <id>silvertrak-mr3-maven</id>
-            <name>silvertrak-mr3-maven</name>
-            <url>https://silvertrak-842950255465.d.codeartifact.ap-southeast-2.amazonaws.com/maven/mr3-maven/</url>
-        </repository>
-    </distributionManagement>
+            <distributionManagement>
+                <repository>
+                    <id>silvertrak-mr3-maven</id>
+                    <name>silvertrak-mr3-maven</name>
+                    <url>https://silvertrak-842950255465.d.codeartifact.ap-southeast-2.amazonaws.com/maven/mr3-maven/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>silvertrak-shared</id>
+            <distributionManagement>
+                <repository>
+                    <id>silvertrak-shared</id>
+                    <name>silvertrak-shared</name>
+                    <url>https://silvertrak-644111101744.d.codeartifact.ap-southeast-2.amazonaws.com/maven/mr3-maven/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
 </project>
