@@ -75,7 +75,7 @@
         <dependency>
             <groupId>org.web3j</groupId>
             <artifactId>crypto</artifactId>
-            <version>4.8.8</version>
+            <version>4.8.9</version>
         </dependency>
         <!-- core brings in okhttp4, which brings in kotlin-1.4 -->
         <!--
@@ -89,7 +89,7 @@
         <dependency>
             <groupId>com.github.jnr</groupId>
             <artifactId>jnr-unixsocket</artifactId>
-            <version>0.38.12</version>
+            <version>0.38.13</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.1</version>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
 
