@@ -10,7 +10,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jackson-bom.version>2.12.6.20220326</jackson-bom.version>
+        <jackson-bom.version>2.13.5</jackson-bom.version>
     </properties>
     <build>
         <sourceDirectory>src</sourceDirectory>
@@ -28,8 +28,13 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -38,7 +43,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.6.0</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -104,7 +109,7 @@
         <dependency>
             <groupId>com.github.jnr</groupId>
             <artifactId>jnr-unixsocket</artifactId>
-            <version>0.38.17</version>
+            <version>0.38.19</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -124,21 +129,18 @@
 
     <profiles>
         <profile>
-            <id>silvertrak-mr3-maven</id>
-            <distributionManagement>
-                <repository>
-                    <id>silvertrak-mr3-maven</id>
-                    <name>silvertrak-mr3-maven</name>
-                    <url>https://silvertrak-842950255465.d.codeartifact.ap-southeast-2.amazonaws.com/maven/mr3-maven/</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-        <profile>
+            <!--
+             https://docs.aws.amazon.com/codeartifact/latest/ug/maven-mvn.html for ~/.m2/settings.xml
+
+             export CODEARTIFACT_AUTH_TOKEN=`aws -&#45;profile silvertrak-shared codeartifact get-authorization-token -&#45;domain silvertrak -&#45;domain-owner 644111101744 -&#45;query authorizationToken -&#45;output text`
+
+             mvn -P silvertrak-shared deploy
+            -->
             <id>silvertrak-shared</id>
             <distributionManagement>
                 <repository>
-                    <id>silvertrak-shared</id>
-                    <name>silvertrak-shared</name>
+                    <id>codeartifact</id>
+                    <name>codeartifact</name>
                     <url>https://silvertrak-644111101744.d.codeartifact.ap-southeast-2.amazonaws.com/maven/mr3-maven/</url>
                 </repository>
             </distributionManagement>
